@@ -7,6 +7,13 @@
     </url>
     
     <url>
+        <loc>http://ihuanrong.github.io/archive/</loc>
+        <lastmod>2019-04-25T11:52:50.846Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
         <loc>http://ihuanrong.github.io/about/</loc>
         <lastmod>2019-04-25T06:03:10.632Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -15,13 +22,6 @@
     
     <url>
         <loc>http://ihuanrong.github.io/404.html</loc>
-        <lastmod>2019-03-27T06:18:02.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <url>
-        <loc>http://ihuanrong.github.io/archive/</loc>
         <lastmod>2019-03-27T06:18:02.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
