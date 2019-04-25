@@ -390,7 +390,7 @@ Peace!</p>
 
 
 <!--GitTalk 评论代码-->
-{% if theme.gitalk.enable %}
+{% if(theme.gitalk.enable) {%}
     <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
 <div id="gitalk-container"></div>
 <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
@@ -405,7 +405,7 @@ Peace!</p>
     })
     gitalk.render('gitalk-container')
 </script>
-{% endif %}
+{% } %}
 
 
 
