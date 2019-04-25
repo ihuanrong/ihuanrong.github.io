@@ -144,6 +144,13 @@
 
                         
                         <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/archive/">Archives</a>
                         </li>
                         
@@ -152,13 +159,6 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -216,19 +216,6 @@
 
                 <h1 id="什么是序列模型">什么是序列模型</h1>
 <hr>
-<p>\[y = {f_{ {g_1}}}(x)\]</p>
-<p>$$y = {f_{ {g_1}}}(x)$$</p>
-<p>$y = {f_{ {g_1}}}(x)$</p>
-<h2 id="注意改了主题名">注意！！改了主题名！！</h2>
-<p>下图给出了以下内容的表示方法：\(y = f(x)\)1）句子中每个单词；2）输入/输出；3）输入/输出向量所含单词量。<br>
-如：\(x^{(b)\lt a\gt}\) 表示第\(i\)个样本的时序序列中，第$$t$$个位置。不论是否为时序序列，都将用(t)来索引序列中的位置。</p>
-<p>$$x^{(b)\lt a\gt}$$<br>
-\[y = {f^{ {g_1}}}(x)\]</p>
-<p>\(\lt t \gt\)</p>
-<p>…<br>
-(span(i, j))<br>
-\(\alpha\)</p>
-<p>\[y = {f_{ {g_1}}}(x)\]</p>
 <blockquote>
 <p>Sequences are a data structure where each example could be seen as a series of data points. This sentence: “I am currently reading an article about sequence modeling with Neural Networks” is an example that consists of multiple words and words depend on each other.</p>
 </blockquote>
@@ -238,12 +225,9 @@
 <p>而以上所有问题，都可以归为在训练集中标注X，Y的监督学习。</p>
 <h1 id="数学符号">数学符号</h1>
 <hr>
-<p>fuck you!!!</p>
 <p>下图给出了以下内容的表示方法：1）句子中每个单词；2）输入/输出；3）输入/输出向量所含单词量。<br>
-如：$$x^{(i)<t>}$$ 表示第$i$个样本的时序序列中，第$$t$$个位置。不论是否为时序序列，都将用(t)来索引序列中的位置。</t></p>
-<p>…<br>
-(span(i, j))<br>
-\alpha</p>
+如：$x^{(i)\lt t\gt}$表示第$i$个样本的时序序列中，第$t$个位置。不论是否为时序序列，都将用$t$来索引序列中的位置。</p>
+<p>To be continued…</p>
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
 </script>
@@ -257,7 +241,7 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/在Blog中添加公式/" data-toggle="tooltip" data-placement="top" title="在Blog中支持LaTex公式">&larr; Previous Post</a>
+                            <a href="/article/在Blog中支持LaTex公式/" data-toggle="tooltip" data-placement="top" title="在Blog中支持LaTex公式">&larr; Previous Post</a>
                         </li>
                     
                     
@@ -318,7 +302,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#什么是序列模型"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">&#x4EC0;&#x4E48;&#x662F;&#x5E8F;&#x5217;&#x6A21;&#x578B;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#注意改了主题名"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">&#x6CE8;&#x610F;&#xFF01;&#xFF01;&#x6539;&#x4E86;&#x4E3B;&#x9898;&#x540D;&#xFF01;&#xFF01;</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#数学符号"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">&#x6570;&#x5B66;&#x7B26;&#x53F7;</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#什么是序列模型"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">&#x4EC0;&#x4E48;&#x662F;&#x5E8F;&#x5217;&#x6A21;&#x578B;</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#数学符号"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">&#x6570;&#x5B66;&#x7B26;&#x53F7;</span></a></li></ol>
         
         </div>
       </aside>
@@ -452,11 +436,11 @@
                 <p class="copyright text-muted">
                     Copyright &copy; huanrong 2019 
                     <br>
-                    Theme by <a href="http://beantech.org">BeanTech</a> 
+                    Welcome to my blog <a href="http://ihuanrong.github.io">huanrong</a> 
                     <span style="display: inline-block; margin: 0 5px;">
-                        <i class="fa fa-heart"></i>
+                        <!--<i class="fa fa-heart"></i>-->
                     </span> 
-                    re-Ported by <a href="http://www.huweihuang.com">胡伟煌</a> | 
+                    <!--re-Ported by <a href="http://www.huweihuang.com">胡伟煌</a>--> | 
                     <iframe
                         style="margin-left: 2px; margin-bottom:-5px;"
                         frameborder="0" scrolling="0" width="91px" height="20px"

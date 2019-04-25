@@ -18,7 +18,7 @@
         
     </title>
 
-    <link rel="canonical" href="http://ihuanrong.github.io/article/在Blog中添加公式/">
+    <link rel="canonical" href="http://ihuanrong.github.io/article/在Blog中支持LaTex公式/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -90,6 +90,8 @@
                             
                               <a class="tag" href="/tags/#Hexo" title="Hexo">Hexo</a>
                             
+                              <a class="tag" href="/tags/#Blog" title="Blog">Blog</a>
+                            
                               <a class="tag" href="/tags/#LaTex" title="LaTex">LaTex</a>
                             
                         </div>
@@ -144,6 +146,13 @@
 
                         
                         <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/archive/">Archives</a>
                         </li>
                         
@@ -152,13 +161,6 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -217,13 +219,13 @@
                 <blockquote>
 <p>因为公式在博客中不能显示的问题折腾了好几天，在网上找了不少方法，竟然无一能用。有的方法在server中可以显示公式，部署到github上仍旧是一串LateX代码。我猜这应该是js的渲染有问题，或者没有后端正确地加载js库。由于我不是前端程序员，背后的原理并没有弄得很懂。在我一筹莫展之时，得知在md文本中可以直接插入js代码，虽然简单粗暴，但的确行之有效，只在需要用到公式的文本中添加js代码也能很好地节约资源。</p>
 </blockquote>
-<h1 id="mathjax简介">MathJax简介</h1>
+<h1 id="1-mathjax简介">1 MathJax简介</h1>
 <hr>
 <p>这里对数学符号用的渲染引擎是MathJax，使用MathJax可以方便的在浏览器中显示数学公式，它可以解析Latex、MathML和ASCIIMathML的标记语言。<br>
 关于MathJax以及LaTex的基础用法可以参考文章（时间关系，有空补充）：<br>
 <a href="https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference/5044" target="_blank" rel="noopener">MathJax basic tutorial and quick reference</a><br>
 <a href="https://www.cnblogs.com/linxd/p/4955530.html" target="_blank" rel="noopener">Mathjax与LaTex公式简介</a></p>
-<h1 id="在page中使用mathjax">在page中使用MathJax</h1>
+<h1 id="2-在page中使用mathjax">2 在page中使用MathJax</h1>
 <hr>
 <ol>
 <li>
@@ -245,19 +247,17 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML</span><br></pre></td></tr></table></figure>
 <p>所以最后的代码应为：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/x-mathjax-config&quot;&gt;</span><br><span class="line">  MathJax.Hub.Config(&#123;tex2jax: &#123;inlineMath: [[&apos;$&apos;,&apos;$&apos;], [&apos;\\(&apos;,&apos;\\)&apos;]]&#125;&#125;);</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;script type=&quot;text/javascript&quot; async src=&quot;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML&quot;&gt;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<h1 id="测试">测试</h1>
+<h1 id="3-测试">3 测试</h1>
 <hr>
 <p>大功告成！来测试一下：</p>
-<p>行间公式（使用displayed分隔符）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$$\sum_&#123;i=0&#125;^n i^2 = \frac&#123;(n^2+n)(2n+1)&#125;&#123;6&#125;$$</span><br><span class="line"></span><br><span class="line">//[\sum_&#123;i=0&#125;^n i^2 = \frac&#123;(n^2+n)(2n+1)&#125;&#123;6&#125;//]</span><br></pre></td></tr></table></figure>
-<p>效果<br>
-$$\sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}$$</p>
-<p>//[\sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}//]</p>
-<p>行内公式（使用inline分隔符）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$\sum_&#123;i=0&#125;^n i^2 = \frac&#123;(n^2+n)(2n+1)&#125;&#123;6&#125;$</span><br><span class="line"></span><br><span class="line">//(\sum_&#123;i=0&#125;^n i^2 = \frac&#123;(n^2+n)(2n+1)&#125;&#123;6&#125;//)</span><br></pre></td></tr></table></figure>
-<p>效果<br>
-$\sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}$</p>
-<p>//(\sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}//)</p>
+<p><strong>行间公式（使用displayed分隔符）</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$$\sum_&#123;i=0&#125;^n i^2 = \frac&#123;(n^2+n)(2n+1)&#125;&#123;6&#125;$$</span><br><span class="line"></span><br><span class="line">\\[\sum_&#123;i=0&#125;^n i^2 = \frac&#123;(n^2+n)(2n+1)&#125;&#123;6&#125;\\]</span><br></pre></td></tr></table></figure>
+<p>效果：<br>
+\[\sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}\]</p>
+<p><strong>行内公式（使用inline分隔符）</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$\sum_&#123;i=0&#125;^n i^2 = \frac&#123;(n^2+n)(2n+1)&#125;&#123;6&#125;$</span><br><span class="line"></span><br><span class="line">\\(\sum_&#123;i=0&#125;^n i^2 = \frac&#123;(n^2+n)(2n+1)&#125;&#123;6&#125;\\)</span><br></pre></td></tr></table></figure>
+<p>效果：<br>
+这是行内公式：$\sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}$。</p>
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
 </script>
@@ -327,7 +327,7 @@ $\sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}$</p>
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#mathjax简介"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">MathJax&#x7B80;&#x4ECB;</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#在page中使用mathjax"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">&#x5728;page&#x4E2D;&#x4F7F;&#x7528;MathJax</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#测试"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">&#x6D4B;&#x8BD5;</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#1-mathjax简介"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">1 MathJax&#x7B80;&#x4ECB;</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#2-在page中使用mathjax"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">2 &#x5728;page&#x4E2D;&#x4F7F;&#x7528;MathJax</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#3-测试"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">3 &#x6D4B;&#x8BD5;</span></a></li></ol>
         
         </div>
       </aside>
@@ -348,6 +348,8 @@ $\sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}$</p>
                     <div class="tags">
                        
                           <a class="tag" href="/tags/#Hexo" title="Hexo">Hexo</a>
+                        
+                          <a class="tag" href="/tags/#Blog" title="Blog">Blog</a>
                         
                           <a class="tag" href="/tags/#LaTex" title="LaTex">LaTex</a>
                         
@@ -461,11 +463,11 @@ $\sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}$</p>
                 <p class="copyright text-muted">
                     Copyright &copy; huanrong 2019 
                     <br>
-                    Theme by <a href="http://beantech.org">BeanTech</a> 
+                    Welcome to my blog <a href="http://ihuanrong.github.io">huanrong</a> 
                     <span style="display: inline-block; margin: 0 5px;">
-                        <i class="fa fa-heart"></i>
+                        <!--<i class="fa fa-heart"></i>-->
                     </span> 
-                    re-Ported by <a href="http://www.huweihuang.com">胡伟煌</a> | 
+                    <!--re-Ported by <a href="http://www.huweihuang.com">胡伟煌</a>--> | 
                     <iframe
                         style="margin-left: 2px; margin-bottom:-5px;"
                         frameborder="0" scrolling="0" width="91px" height="20px"
