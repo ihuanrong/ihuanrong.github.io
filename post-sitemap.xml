@@ -15,6 +15,14 @@
     </url>
 
     <url>
+        <loc>http://ihuanrong.github.io/article/%E5%9C%A8Blog%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%85%AC%E5%BC%8F/</loc>
+        <lastmod>2019-04-25T02:13:18.242Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://ihuanrong.github.io/article/hexo-theme-beantech/</loc>
         <lastmod>2019-04-19T09:44:35.715Z</lastmod>
         <changefreq>weekly</changefreq>
