@@ -9,13 +9,6 @@
     </url>
 
     <url>
-        <loc>http://ihuanrong.github.io/tags/LaTex/</loc>
-        <lastmod>2019-04-25T02:30:34.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://ihuanrong.github.io/tags/Blog/</loc>
         <lastmod>2019-04-25T02:30:34.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -23,15 +16,22 @@
     </url>
 
     <url>
+        <loc>http://ihuanrong.github.io/tags/LaTex/</loc>
+        <lastmod>2019-04-25T02:30:34.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://ihuanrong.github.io/tags/NLP/</loc>
-        <lastmod>2029-04-22T08:41:31.000Z</lastmod>
+        <lastmod>2019-04-25T05:22:37.791Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://ihuanrong.github.io/tags/Deep-Learning/</loc>
-        <lastmod>2029-04-22T08:41:31.000Z</lastmod>
+        <lastmod>2019-04-25T05:22:37.791Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
