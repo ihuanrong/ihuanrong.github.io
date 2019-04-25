@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          在Blog中支持LaTex公式 - HuanRong&#39;s Blog | 换容的博客
+          Autonomous driving - Car detection - HuanRong&#39;s Blog | 换容的博客
         
     </title>
 
-    <link rel="canonical" href="http://ihuanrong.github.io/article/support-LaTex-in-blog/">
+    <link rel="canonical" href="http://ihuanrong.github.io/article/Autonomous-driving-Car-detection/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -71,7 +71,7 @@
 <style type="text/css">
     header.intro-header{
         
-            background-image: url('/img/article_header/Flowers-and-Tripod.jpg')
+            background-image: url('/img/article_header/artificial-intelligence-2228610_1920.jpg')
             /*post*/
         
     }
@@ -88,15 +88,13 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#Hexo" title="Hexo">Hexo</a>
+                              <a class="tag" href="/tags/#CV" title="CV">CV</a>
                             
-                              <a class="tag" href="/tags/#Blog" title="Blog">Blog</a>
-                            
-                              <a class="tag" href="/tags/#LaTex" title="LaTex">LaTex</a>
+                              <a class="tag" href="/tags/#Deep Learning" title="Deep Learning">Deep Learning</a>
                             
                         </div>
-                        <h1>在Blog中支持LaTex公式</h1>
-                        <h2 class="subheading"></h2>
+                        <h1>Autonomous driving - Car detection</h1>
+                        <h2 class="subheading">自动驾驶 - 车辆检测</h2>
                         <span class="meta">
                             Posted by huanrong on
                             2019-04-25
@@ -216,67 +214,97 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <!--<div align="middle"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="https://music.163.com/song/media/outer/url?id=64556.mp3&auto=1&height=32"></iframe><div>-->
+                <p>Autonomous driving - Car detection</p>
 <blockquote>
-<p>因为公式在博客中不能显示的问题折腾了好几天，在网上找了不少方法，竟然无一能用。有的方法在server中可以显示公式，部署到github上仍旧是一串LateX代码。我猜这应该是js的渲染有问题，或者没有后端正确地加载js库。由于我不是前端程序员，背后的原理并没有弄得很懂。在我一筹莫展之时，得知在md文本中可以直接插入js代码，虽然简单粗暴，但的确行之有效，只在需要用到公式的文本中添加js代码也能很好地节约资源。</p>
+<p>本次编程作业主要基于吴恩达的深度学习课程（4.3 目标检测）以及以下两篇论文：<a href="https://arxiv.org/abs/1506.02640" target="_blank" rel="noopener">Redmon et al., 2016</a> 以及 <a href="https://arxiv.org/abs/1612.08242" target="_blank" rel="noopener">Redmon and Farhadi, 2016</a>。</p>
 </blockquote>
-<h1 id="1-mathjax简介">1 MathJax简介</h1>
+<h1 id="1-问题描述">1 问题描述</h1>
 <hr>
-<p>这里对数学符号用的渲染引擎是MathJax，使用MathJax可以方便的在浏览器中显示数学公式，它可以解析Latex、MathML和ASCIIMathML的标记语言。<br>
-关于MathJax以及LaTex的基础用法可以参考文章（时间关系，有空补充）：<br>
-<a href="https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference/5044" target="_blank" rel="noopener">MathJax basic tutorial and quick reference</a><br>
-<a href="https://www.cnblogs.com/linxd/p/4955530.html" target="_blank" rel="noopener">Mathjax与LaTex公式简介</a></p>
-<h1 id="2-在page中使用mathjax">2 在page中使用MathJax</h1>
+<ul>
+<li>Build a car detection system</li>
+<li>There are images gathered that have been labelled by drawing bounding boxes around every car you found.<br>
+<img src="box_label.png" alt="Definition of a box"></li>
+<li>If you have 80 classes that you want YOLO to recognize, you can represent the class label  $c$  either as an integer from 1 to 80, or as an 80-dimensional vector (with 80 numbers) one component of which is 1 and the rest of which are 0.</li>
+</ul>
+<h1 id="2-yolo">2 YOLO</h1>
 <hr>
+<blockquote>
+<p>YOLO (“you only look once”)是一个具有高准确度并可实时运行的算法。</p>
+</blockquote>
+<h2 id="21-model-details">2.1 Model details</h2>
+<ul>
+<li>The <strong>input</strong> is a batch of images of shape (m, 608, 608, 3)</li>
+<li>The <strong>output</strong> is a list of bounding boxes along with the recognized classes. Each bounding box is represented by 6 numbers $(p_c, b_x, b_y, b_h, b_w, c)$ as explained above. If you expand $c$ into an 80-dimensional vector, each bounding box is then represented by 85 numbers.</li>
+</ul>
+<p>We will use 5 anchor boxes. So you can think of the YOLO architecture as the following: IMAGE (m, 608, 608, 3) -&gt; DEEP CNN -&gt; ENCODING (m, 19, 19, 5, 85).</p>
+<p><img src="architecture.png" alt="Encoding architecture for YOLO"></p>
+<p>若物体中的的中心落入到网格当中，这个网格则负责把该物体检测出来。</p>
+<p>For each box (of each cell) we will compute the following elementwise product and extract a probability that the box contains a certain class.<br>
+<img src="probability_extraction.png" alt="Find the class detected by each box"></p>
+<p>Here’s one way to visualize what YOLO is predicting on an image:</p>
+<ul>
+<li>For each of the 19x19 grid cells, find the maximum of the probability scores (taking a max across both the 5 anchor boxes and across different classes).</li>
+<li>Color that grid cell according to what object that grid cell considers the most likely.</li>
+</ul>
+<p>Doing this results in this picture:<br>
+<img src="proba_map.png" style="width:300px;height:300;"></p>
+<caption><center> <u> **Figure 5** </u>: Each of the 19x19 grid cells colored according to which class has the largest predicted probability in that cell.<br> </center></caption>
+<p>Note that this visualization isn’t a core part of the YOLO algorithm itself for making predictions; it’s just a nice way of visualizing an intermediate result of the algorithm.</p>
+<p>Another way to visualize YOLO’s output is to plot the bounding boxes that it outputs. Doing that results in a visualization like this:<br>
+<img src="anchor_map.png" style="width:200px;height:200;"></p>
+ <center>Each cell gives you 5 boxes. In total, the model predicts: 19x19x5 = 1805 boxes just by looking once at the image (one forward pass through the network)! Different colors denote different classes.</center>
+<p>In the figure above, we plotted only boxes that the model had assigned a high probability to, but this is still too many boxes. You’d like to filter the algorithm’s output down to a much smaller number of detected objects. To do so, you’ll use non-max suppression. Specifically, you’ll carry out these steps:</p>
+<ul>
+<li>Get rid of boxes with a low score (meaning, the box is not very confident about detecting a class)</li>
+<li>Select only one box when several boxes overlap with each other and detect the same object.</li>
+</ul>
+<h2 id="22-filtering-with-a-threshold-on-class-scores">2.2 Filtering with a threshold on class scores</h2>
+<p>此步目的是把score小于某个阈值的box给去掉。<br>
+变量：</p>
+<ul>
+<li><code>box_confidence</code>: tensor of shape $(19 \times 19, 5, 1)$ containing $p_c$ (confidence probability that there’s some object) for each of the 5 boxes predicted in each of the 19x19 cells.</li>
+<li><code>boxes</code>: tensor of shape $(19 \times 19, 5, 4)$ containing $(b_x, b_y, b_h, b_w)$ for each of the 5 boxes per cell.</li>
+<li><code>box_class_probs</code>: tensor of shape $(19 \times 19, 5, 80)$ containing the detection probabilities $(c_1, c_2, … c_{80})$ for each of the 80 classes for each of the 5 boxes per cell.</li>
+</ul>
+<p>步骤：</p>
 <ol>
-<li>
-<p>首先进入MathJax官网<br>
-<img src="1.png" alt=""></p>
-</li>
-<li>
-<p>在Documentation中选择 Learn more，并翻到下面的 “Jump to our docs”。<br>
-<img src="2.png" alt=""></p>
-</li>
-<li>
-<p>在出来的docs页面中找到如下实例代码，复制其中script标签内的内容，贴到你的markdown文本之中（我习惯放在最后）。<br>
-<img src="3.png" alt=""></p>
-</li>
-<li>
-<p>关键！把src的内容替换为</p>
-</li>
+<li>Compute box scores</li>
+<li>Find the box_classes thanks to the max box_scores, keep track of the corresponding score</li>
+<li>Create a filtering mask based on “box_class_scores” by using “threshold”. The mask should have the same dimension as box_class_scores, and be True for the boxes you want to keep (with probability &gt;= threshold)</li>
+<li>Apply the mask to scores, boxes and classes</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML</span><br></pre></td></tr></table></figure>
-<p>所以最后的代码应为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/x-mathjax-config&quot;&gt;</span><br><span class="line">  MathJax.Hub.Config(&#123;tex2jax: &#123;inlineMath: [[&apos;$&apos;,&apos;$&apos;], [&apos;\\(&apos;,&apos;\\)&apos;]]&#125;&#125;);</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;script type=&quot;text/javascript&quot; async src=&quot;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML&quot;&gt;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<h1 id="3-测试">3 测试</h1>
-<hr>
-<p>大功告成！来测试一下：</p>
-<p><strong>行间公式（使用displayed分隔符）</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$$\sum_&#123;i=0&#125;^n i^2 = \frac&#123;(n^2+n)(2n+1)&#125;&#123;6&#125;$$</span><br><span class="line"></span><br><span class="line">\\[\sum_&#123;i=0&#125;^n i^2 = \frac&#123;(n^2+n)(2n+1)&#125;&#123;6&#125;\\]</span><br></pre></td></tr></table></figure>
-<p>效果：<br>
-\[\sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}\]</p>
-<p><strong>行内公式（使用inline分隔符）</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$\sum_&#123;i=0&#125;^n i^2 = \frac&#123;(n^2+n)(2n+1)&#125;&#123;6&#125;$</span><br><span class="line"></span><br><span class="line">\\(\sum_&#123;i=0&#125;^n i^2 = \frac&#123;(n^2+n)(2n+1)&#125;&#123;6&#125;\\)</span><br></pre></td></tr></table></figure>
-<p>效果：<br>
-这是行内公式：$\sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}$。</p>
+<p>在写此步代码的过程中，有几点需要注意的：</p>
+<ol>
+<li>使用<code>keras.backend.max</code>时，不要令<code>keepdims=True</code>，关于keepdims的用法，我会另起一段解释说明。</li>
+<li>使用<code>tf.boolean_mask</code>时，忽略doc上给出的’axis’参数。实际上，本步骤也并不需要用到该参数。</li>
+</ol>
+<h2 id="23-non-max-suppression">2.3 Non-max suppression</h2>
+<p>在过滤掉一部分classes和scores以后，仍然会有许多重叠的box，对剩下的box再进行选择的步骤成为<code>non-maximum suppression (NMS)</code><br>
+<img src="non-max-suppression.png" alt="Definition of &amp;quot;Intersection over Union"><br>
+其中，NMS 用到一个函数<code>Intersection over Union(交并比/IoU)</code>。</p>
+<p>交并比的计算过程这里就不赘述了，使用tf提供的函数可以直接计算NMS，而无需用到交并比。其中，交集计算的主要思路是计算出两个box所交区域的top-left以及bottom-right两个点再进一步计算出相交区域面积。</p>
+<p>两个有用函数的文档：</p>
+<ul>
+<li><a href="https://www.tensorflow.org/api_docs/python/tf/image/non_max_suppression" target="_blank" rel="noopener">tf.image.non_max_suppression()</a></li>
+<li><a href="https://www.tensorflow.org/api_docs/python/tf/gather" target="_blank" rel="noopener">K.gather()</a></li>
+</ul>
+<p>实现（调包，十分简单，主要传入的max_boxes是一个tensor，而不是整数）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"> max_boxes_tensor = K.variable(max_boxes, dtype=<span class="string">'int32'</span>)     <span class="comment"># tensor to be used in tf.image.non_max_suppression()</span></span><br><span class="line">K.get_session().run(tf.variables_initializer([max_boxes_tensor])) <span class="comment"># initialize variable max_boxes_tensor</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Use tf.image.non_max_suppression() to get the list of indices corresponding to boxes you keep</span></span><br><span class="line"><span class="comment">#注意把max_boxes转换成tensor</span></span><br><span class="line"><span class="comment">### START CODE HERE ### (≈ 1 line)</span></span><br><span class="line">nms_indices = tf.image.non_max_suppression(boxes, scores, max_boxes_tensor, iou_threshold)</span><br><span class="line"><span class="comment">### END CODE HERE ###</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Use K.gather() to select only nms_indices from scores, boxes and classes</span></span><br><span class="line"><span class="comment">### START CODE HERE ### (≈ 3 lines)</span></span><br><span class="line">scores = K.gather(scores, nms_indices)</span><br><span class="line">boxes = K.gather(boxes, nms_indices)</span><br><span class="line">classes = K.gather(classes, nms_indices)</span><br><span class="line"><span class="comment">### END CODE HERE ###</span></span><br></pre></td></tr></table></figure>
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
 </script>
 <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML">
 </script>
+
                 
 
                 <hr>
                 <!-- Pager -->
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/article/Autonomous-driving-Car-detection/" data-toggle="tooltip" data-placement="top" title="Autonomous driving - Car detection">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/article/sequence-models-dlai/" data-toggle="tooltip" data-placement="top" title="Sequence Models">Next Post &rarr;</a>
+                            <a href="/article/support-LaTex-in-blog/" data-toggle="tooltip" data-placement="top" title="在Blog中支持LaTex公式">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -332,7 +360,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#1-mathjax简介"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">1 MathJax&#x7B80;&#x4ECB;</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#2-在page中使用mathjax"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">2 &#x5728;page&#x4E2D;&#x4F7F;&#x7528;MathJax</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#3-测试"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">3 &#x6D4B;&#x8BD5;</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#1-问题描述"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">1 &#x95EE;&#x9898;&#x63CF;&#x8FF0;</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#2-yolo"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">2 YOLO</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#21-model-details"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">2.1 Model details</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#22-filtering-with-a-threshold-on-class-scores"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">2.2 Filtering with a threshold on class scores</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#23-non-max-suppression"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">2.3 Non-max suppression</span></a></li></ol></li></ol>
         
         </div>
       </aside>
@@ -352,11 +380,9 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#Hexo" title="Hexo">Hexo</a>
+                          <a class="tag" href="/tags/#CV" title="CV">CV</a>
                         
-                          <a class="tag" href="/tags/#Blog" title="Blog">Blog</a>
-                        
-                          <a class="tag" href="/tags/#LaTex" title="LaTex">LaTex</a>
+                          <a class="tag" href="/tags/#Deep Learning" title="Deep Learning">Deep Learning</a>
                         
                     </div>
                 </section>
