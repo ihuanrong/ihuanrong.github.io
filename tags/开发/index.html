@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          Sequence Models - HuanRong&#39;s Blog | 换容的博客
+          HuanRong&#39;s Blog | 换容的博客
         
     </title>
 
-    <link rel="canonical" href="http://ihuanrong.github.io/article/sequence-models-dlai/">
+    <link rel="canonical" href="http://ihuanrong.github.io/tags/开发/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -71,8 +71,8 @@
 <style type="text/css">
     header.intro-header{
         
-            background-image: url('/img/article_header/artificial-intelligence-2228610_1920.jpg')
-            /*post*/
+            background-image: url('/img/header_img/archives-widget.jpg')
+            /*page*/
         
     }
     
@@ -85,20 +85,10 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 
-                    <div class="post-heading">
-                        <div class="tags">
-                            
-                              <a class="tag" href="/tags/#NLP" title="NLP">NLP</a>
-                            
-                              <a class="tag" href="/tags/#Deep Learning" title="Deep Learning">Deep Learning</a>
-                            
-                        </div>
-                        <h1>Sequence Models</h1>
-                        <h2 class="subheading">循环序列模型介绍</h2>
-                        <span class="meta">
-                            Posted by huanrong on
-                            2019-04-21
-                        </span>
+                    <div class="site-heading">
+                        <h1>HuanRong&#39;s Blog</h1>
+                        <!--<hr class="small">-->
+                        <span class="subheading">换容 | 走在成为Geek的路上 | 计算机视觉&amp;英语爱好者</span>
                     </div>
                 
 
@@ -201,223 +191,282 @@
 
 
     <!-- Main Content -->
-    <!-- Modify by Yu-Hsuan Yen -->
+    <!-- Main Content -->
+<div class="container">
+    <div class="row">
+        
 
-<!-- Post Content -->
-<article>
-    <div class="container">
-        <div class="row">
-
-            <!-- Post Container -->
+<!-- USE SIDEBAR -->
+    <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                post-container">
-
-                <h1 id="什么是序列模型">什么是序列模型</h1>
-<hr>
-<blockquote>
-<p>Sequences are a data structure where each example could be seen as a series of data points. This sentence: “I am currently reading an article about sequence modeling with Neural Networks” is an example that consists of multiple words and words depend on each other.</p>
-</blockquote>
-<p>从上面的描述可以看出，序列模型有两个特点：1）可视为一连串的数据点；2）数据点之间相互依赖。</p>
-<p>以下是几个典型的序列数据：<br>
-<img src="1.png" alt="logo"></p>
-<p>而以上所有问题，都可以归为在训练集中标注X，Y的监督学习。</p>
-<h1 id="数学符号">数学符号</h1>
-<hr>
-<p>下图给出了以下内容的表示方法：1）句子中每个单词；2）输入/输出；3）输入/输出向量所含单词量。<br>
-如：$x^{(i)\lt t\gt}$表示第$i$个样本的时序序列中，第$t$个位置。不论是否为时序序列，都将用$t$来索引序列中的位置。</p>
-<p>To be continued…</p>
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
-</script>
-<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML">
-</script>
-
+                col-lg-8 col-lg-offset-1
+                col-md-8 col-md-offset-1
+                col-sm-12
+                col-xs-12
+                post-container
+            ">
+            
                 
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <!-- 归档列表 -->
+            
+            
 
-                <hr>
-                <!-- Pager -->
-                <ul class="pager">
-                    
-                        <li class="previous">
-                            <a href="/article/support-LaTex-in-blog/" data-toggle="tooltip" data-placement="top" title="在Blog中支持LaTex公式">&larr; Previous Post</a>
-                        </li>
-                    
-                    
-                        <li class="next">
-                            <a href="/article/python-basic/" data-toggle="tooltip" data-placement="top" title="使用Python遇到的问题">Next Post &rarr;</a>
-                        </li>
-                    
+             <!-- 归档列表 -->
+
+            
+            <div class="one-tag-list">
+                <span class="fa fa-calendar-times-o listing-seperator" id="2019">
+                    <span class="tag-text">2019</span>
+                </span>
+                <ul>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    04-25
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/article/support-LaTex-in-blog/" style="color: #0085a1">
+                        <span>
+                            在Blog中支持LaTex公式
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    04-21
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/article/sequence-models-dlai/" style="color: #0085a1">
+                        <span>
+                            Sequence Models
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
                 </ul>
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-calendar-times-o listing-seperator" id="2018">
+                    <span class="tag-text">2018</span>
+                </span>
+                <ul>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    11-21
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/article/python-basic/" style="color: #0085a1">
+                        <span>
+                            使用Python遇到的问题
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                </ul>
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-calendar-times-o listing-seperator" id="2017">
+                    <span class="tag-text">2017</span>
+                </span>
+                <ul>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    03-18
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/article/hexo-theme-beantech/" style="color: #0085a1">
+                        <span>
+                            [Hexo] Theme BeanTech
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                </ul>
+            </div>
+            
+
+
+        </div>
+    </div>
+</div>
 
                 <br>
 
-                <!--打赏-->
-                
-                <!--打赏-->
-
-                <br>
-                <!--分享-->
-                
-                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
-                    <!--  css & js -->
-                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
-                
-                <!--分享-->
-                <br>                       
-                
                 <!-- require APlayer -->
                 
 
-                <!-- duoshuo Share start -->
+                <!-- 如果开启评论功能 -->
                 
-                <!-- 多说 Share end-->
-
-                <!-- 多说评论框 start -->
-                
-                <!-- 多说评论框 end -->
-
-                <!-- disqus comment start -->
-                
-                <!-- disqus comment end -->
-
-                
-
             </div>
+
+          <!-- Sidebar Container -->
+<div class="
+    col-lg-3 col-lg-offset-0
+    col-md-3 col-md-offset-0
+    col-sm-12
+    col-xs-12
+    sidebar-container
+">
+    
+        <!-- Featured Tags -->
+
+<section>
+    <!-- no hr -->
+    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+    <div class="tags">
+        
             
-            <!-- Tabe of Content -->
-            <!-- Table of Contents -->
-
-  
-    <style>
-      span.toc-nav-number{
-        display: none
-      }
-    </style>
-  
-    
-      <aside id="sidebar">
-        <div id="toc" class="toc-article">
-        <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#什么是序列模型"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">&#x4EC0;&#x4E48;&#x662F;&#x5E8F;&#x5217;&#x6A21;&#x578B;</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#数学符号"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">&#x6570;&#x5B66;&#x7B26;&#x53F7;</span></a></li></ol>
+            
         
-        </div>
-      </aside>
-    
-
-                
-            <!-- Sidebar Container -->
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                sidebar-container">
-
-                <!-- Featured Tags -->
-                
-                <section>
-                    <!-- no hr -->
-                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-                    <div class="tags">
-                       
-                          <a class="tag" href="/tags/#NLP" title="NLP">NLP</a>
-                        
-                          <a class="tag" href="/tags/#Deep Learning" title="Deep Learning">Deep Learning</a>
-                        
-                    </div>
-                </section>
-                
-
-                <!-- Friends Blog -->
-                
-                <hr>
-                <h5>FRIENDS</h5>
-                <ul class="list-inline">
-
-                    
-                        <li><a href="http://www.fudan.edu.cn" target="_blank">Fudan University</a></li>
-                    
-                        <li><a href="http://ihuanrong.github.io" target="_blank">huanrong</a></li>
-                    
-                        <li><a href="http://ihuanrong.github.io" target="_blank">huanrong</a></li>
-                    
-                        <li><a href="#" target="_blank">lalala</a></li>
-                    
-                </ul>
-                
-				
-				<!--GitTalk 评论代码-->
-				
-					<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-<div id="gitalk-container"></div>
-<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-<script type="text/javascript">
-    var gitalk = new Gitalk({
-        clientID: '4e227d17bf56935c2d77',
-        clientSecret: 'dbf9cf70da778e6de4e8850a11b05ad3e57def8e',
-        id: window.location.pathname,
-        repo: 'blog-comment',
-        owner: 'ihuanrong',
-        admin: 'ihuanrong'
-    })
-    gitalk.render('gitalk-container')
-</script>
-				
-            </div>
-        </div>
+            
+            <a href="/tags/#Hexo" title="Hexo" rel="2">Hexo</a>
+            
+        
+            
+            <a href="/tags/#Blog" title="Blog" rel="2">Blog</a>
+            
+        
+            
+        
+            
+        
+            
+        
     </div>
-</article>
+</section>
 
+        <hr>
+    
+        <!-- Short About -->
+<section class="visible-md visible-lg">
+    <h5><a href="/about/">ABOUT ME</a></h5>
+    <div class="short-about">
 
+        
+            <img id = "avatar_pic" src="img/profile.jpg" />
+        
 
+        
+            <p>我一个狗吃饭旅行到处走走停停</p>
+        
 
+        <!-- SNS Link -->
+        <ul class="list-inline">
+            
+            
+            
 
+            
+                <li>
+                    <a target="_blank" href="http://weibo.com/ihuanrong">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+            
 
+            
 
+            
+                <li>
+                    <a target="_blank"  href="https://github.com/ihuanrong">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+            
+            
+            
+            
+        </ul>
+    </div>
+</section>
 
+        <hr>
+    
+        
+  <h5>近期发布</h3>
+  <div class="widget">
+    <ul>
+      
+        <li>
+          <a href="/article/support-LaTex-in-blog/">在Blog中支持LaTex公式</a>
+        </li>
+      
+        <li>
+          <a href="/article/sequence-models-dlai/">Sequence Models</a>
+        </li>
+      
+        <li>
+          <a href="/article/python-basic/">使用Python遇到的问题</a>
+        </li>
+      
+        <li>
+          <a href="/article/hexo-theme-beantech/">[Hexo] Theme BeanTech</a>
+        </li>
+      
+    </ul>
+  </div>
 
+        <hr>
+    
+        <!-- Friends Blog -->
 
+<h5>友情链接</h5>
+<ul class="list-inline">
 
-<!-- async load function -->
-<script>
-    function async(u, c) {
-      var d = document, t = 'script',
-          o = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      o.src = u;
-      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-      s.parentNode.insertBefore(o, s);
-    }
-</script>
-<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
-<script>
-    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
-        anchors.options = {
-          visible: 'hover',
-          placement: 'left',
-          icon: 'ℬ'
-        };
-        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
-    })
-</script>
-<style>
-    /* place left on bigger screen */
-    @media all and (min-width: 800px) {
-        .anchorjs-link{
-            position: absolute;
-            left: -0.75em;
-            font-size: 1.1em;
-            margin-top : -0.1em;
-        }
-    }
-</style>
+    
+        <li><a href="http://www.fudan.edu.cn" target="_blank">Fudan University</a></li>
+    
+        <li><a href="http://ihuanrong.github.io" target="_blank">huanrong</a></li>
+    
+        <li><a href="http://ihuanrong.github.io" target="_blank">huanrong</a></li>
+    
+        <li><a href="#" target="_blank">lalala</a></li>
+    
+</ul>
 
+        <hr>
+    
+        
+    <h5>ARCHIVES</h5>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li></ul>
+    </div>
 
+        <hr>
+    
+</div>
 
-
-
+        
+    </div>
+</div>
 
 
     <!-- Footer -->

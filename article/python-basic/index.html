@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          Sequence Models - HuanRong&#39;s Blog | 换容的博客
+          使用Python遇到的问题 - HuanRong&#39;s Blog | 换容的博客
         
     </title>
 
-    <link rel="canonical" href="http://ihuanrong.github.io/article/sequence-models-dlai/">
+    <link rel="canonical" href="http://ihuanrong.github.io/article/python-basic/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -71,7 +71,7 @@
 <style type="text/css">
     header.intro-header{
         
-            background-image: url('/img/article_header/artificial-intelligence-2228610_1920.jpg')
+            background-image: url('\img\article_header\artificial-intelligence-2228610_1920.jpg')
             /*post*/
         
     }
@@ -88,16 +88,16 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#NLP" title="NLP">NLP</a>
+                              <a class="tag" href="/tags/#python" title="python">python</a>
                             
-                              <a class="tag" href="/tags/#Deep Learning" title="Deep Learning">Deep Learning</a>
+                              <a class="tag" href="/tags/#开发" title="开发">开发</a>
                             
                         </div>
-                        <h1>Sequence Models</h1>
-                        <h2 class="subheading">循环序列模型介绍</h2>
+                        <h1>使用Python遇到的问题</h1>
+                        <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by huanrong on
-                            2019-04-21
+                            2018-11-21
                         </span>
                     </div>
                 
@@ -214,25 +214,79 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="什么是序列模型">什么是序列模型</h1>
-<hr>
-<blockquote>
-<p>Sequences are a data structure where each example could be seen as a series of data points. This sentence: “I am currently reading an article about sequence modeling with Neural Networks” is an example that consists of multiple words and words depend on each other.</p>
+                <blockquote>
+<p>最近在学校的发展规划处参加了一小部分代码的编写工作，还好python还算简单，磕磕绊绊也算是把任务完成了。但是在毫无Python编程基础的情况下，开发过程中难免遇到问题。下面是我在程序编写的过程中遇到的问题，有些是对Python语言特性不熟悉而产生的问题，有些是自己对代码逻辑没搞懂而遇到的问题。</p>
 </blockquote>
-<p>从上面的描述可以看出，序列模型有两个特点：1）可视为一连串的数据点；2）数据点之间相互依赖。</p>
-<p>以下是几个典型的序列数据：<br>
-<img src="1.png" alt="logo"></p>
-<p>而以上所有问题，都可以归为在训练集中标注X，Y的监督学习。</p>
-<h1 id="数学符号">数学符号</h1>
-<hr>
-<p>下图给出了以下内容的表示方法：1）句子中每个单词；2）输入/输出；3）输入/输出向量所含单词量。<br>
-如：$x^{(i)\lt t\gt}$表示第$i$个样本的时序序列中，第$t$个位置。不论是否为时序序列，都将用$t$来索引序列中的位置。</p>
-<p>To be continued…</p>
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
-</script>
-<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML">
-</script>
+<h1 id="1-用python操作excel">1 用Python操作Excel</h1>
+<h2 id="11-读">1.1 读</h2>
+<pre><code class="language-python">import xlrd
+ 
+cwd = os.getcwd()
+ 
+FilePath = cwd + &quot;\\file.xls&quot;
+File = xlrd.open_workbook(FilePath)
+sheet = File.sheet_by_index(0)
+ 
+#获得某个cell的值
+sheet.cell_value(x, y)
+</code></pre>
+<h2 id="12-写">1.2 写</h2>
+<pre><code class="language-python">import xlwt
+ 
+FilePath = cwd + &quot;\\file.xls&quot;
+File = xlwt.Workbook(encoding = 'utf-8', style_compression = 0)
+sheet = File.add_sheet('sheet0', cell_overwrite_ok = True)
+
+#写单元格
+sheet.write(x, y, content, style)
+ 
+#单元格合并
+sheet.write_merge(x1, x2, y1, y2, content, style)
+#即合并x1到x2列、y1到y2行（含x2与y2）的单元格，网上解释的十分复杂，但是逻辑非常简单的
+ 
+File.save(FilePath)
+#注意最后一定要保存！
+</code></pre>
+<h2 id="13-单元格样式">1.3 单元格样式</h2>
+<blockquote>
+<p>若直接以style()作为write的参数，每次运行一行write都会创建一个新的style对象，程序会报错，比较保险的方法是在使用之前先创建一个style对象，用的使用直接使用style对象作为参数传入即可。</p>
+</blockquote>
+<pre><code class="language-python">StyleDefault = style()
+sheet1.write(0,0, content1, StyleDefault)
+sheet1.write(1,1, content2, StyleDefault)
+sheet1.write(2,2, content3, StyleDefault)
+ 
+#设置单元格宽、高
+sheet.col(1).width = 4000
+sheet.row(1).height = 3000
+</code></pre>
+<h1 id="2-python特性">2 Python特性</h1>
+<h2 id="21-自加自减">2.1 自加/自减</h2>
+<p>编写代码过程中发现Python并没有其他语言中很常见的++、–运算符，于是查了资料，才知道python是以内容为基准的，而不像C/C++以变量为基准，同一个数字5可以用多个名称来访问，a=5和b=5指向的都是同一个对象（可以使用id()观察发现）。这样的逻辑就决定了数字类型的值是无法改变的，也就无法使用自增自减运算符。<br>
+正确的自增：a = a + 1 / a += 1<br>
+其中，python有个整数池，默认1～256的数字都属于这个整数池，这些每次赋值的时候，是取得池中的整数对象。</p>
+<h2 id="22-is-与">2.2 is 与 ==</h2>
+<p>若is是True的，那么==的结果也为True<br>
+is compares for two objects in memory, == compares their values</p>
+<h2 id="23-数组的初始化">2.3 数组的初始化</h2>
+<p>Python中不能直接使用一个没有初始化的数组，一维数组的初始化比较简单，直接用0代表初始元素即可，如a = [0] * 10。二维数组的初始化主要有这几种方式：</p>
+<pre><code class="language-Python">[([0] * 3) for i in range(4)]
+[[0 for col in range(3)] for row in range(4)] 
+</code></pre>
+<p>创建一个4行3列的二维数组</p>
+<h2 id="24-关于list">2.4 关于List</h2>
+<p>Python中的List与Array不同，同一个List里的元素数据类型可以不同，其实它保存的就是指针的集合，而非数据本身。Array是numpy当中封装的，转换关系如下：</p>
+<pre><code class="language-python">a=np.array([1,2,3,4,5])         #List转换为Array
+b=np.array([[1,2,3],[4,5,6]])   #List转换为二维Array
+c=list(a)                       #Array转换为List
+</code></pre>
+<p>List的排序方法是sort()，如果要降序排序，则需要添加一个(reverse=True)参数，如：list1.sort(reverse=True)</p>
+<p>当List作为参数传入一个函数时，是作为实参传入的，如果在函数内操作该List时，原来的List也会发生变化，要生成这个List的副本，使用copy()方法即可，如list2 = list1.copy()</p>
+<h2 id="25-循环操作">2.5 循环操作</h2>
+<p>比较常用的是for循环，与其他语言的循环语句不同，Python的循环语句是“for i in range(10)”或“for i in range(0, 10)”的形式，要注意的是后一个参数是不包括在判断当中的，相当于“for(i = 0, i &lt; 10; i++)”。若要遍历一个List当中的元素同时获得该元素对应的index，则需要使用“for i, item in enumerate(List1)”的格式。</p>
+<h2 id="26-小数输出为百分号格式">2.6 小数输出为百分号格式</h2>
+<p>decimal = “%.2f%%” % (num * 100)</p>
+<p>主要先是这些问题，日后想到再补充……</p>
 
                 
 
@@ -241,12 +295,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/support-LaTex-in-blog/" data-toggle="tooltip" data-placement="top" title="在Blog中支持LaTex公式">&larr; Previous Post</a>
+                            <a href="/article/sequence-models-dlai/" data-toggle="tooltip" data-placement="top" title="Sequence Models">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/article/python-basic/" data-toggle="tooltip" data-placement="top" title="使用Python遇到的问题">Next Post &rarr;</a>
+                            <a href="/article/hexo-theme-beantech/" data-toggle="tooltip" data-placement="top" title="[Hexo] Theme BeanTech">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -302,7 +356,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#什么是序列模型"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">&#x4EC0;&#x4E48;&#x662F;&#x5E8F;&#x5217;&#x6A21;&#x578B;</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#数学符号"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">&#x6570;&#x5B66;&#x7B26;&#x53F7;</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#1-用python操作excel"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">1 &#x7528;Python&#x64CD;&#x4F5C;Excel</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#11-读"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">1.1 &#x8BFB;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#12-写"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">1.2 &#x5199;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#13-单元格样式"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">1.3 &#x5355;&#x5143;&#x683C;&#x6837;&#x5F0F;</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#2-python特性"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">2 Python&#x7279;&#x6027;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#21-自加自减"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">2.1 &#x81EA;&#x52A0;/&#x81EA;&#x51CF;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#22-is-与"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">2.2 is &#x4E0E; ==</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#23-数组的初始化"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">2.3 &#x6570;&#x7EC4;&#x7684;&#x521D;&#x59CB;&#x5316;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#24-关于list"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">2.4 &#x5173;&#x4E8E;List</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#25-循环操作"><span class="toc-nav-number">2.5.</span> <span class="toc-nav-text">2.5 &#x5FAA;&#x73AF;&#x64CD;&#x4F5C;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#26-小数输出为百分号格式"><span class="toc-nav-number">2.6.</span> <span class="toc-nav-text">2.6 &#x5C0F;&#x6570;&#x8F93;&#x51FA;&#x4E3A;&#x767E;&#x5206;&#x53F7;&#x683C;&#x5F0F;</span></a></li></ol></li></ol>
         
         </div>
       </aside>
@@ -322,9 +376,9 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#NLP" title="NLP">NLP</a>
+                          <a class="tag" href="/tags/#python" title="python">python</a>
                         
-                          <a class="tag" href="/tags/#Deep Learning" title="Deep Learning">Deep Learning</a>
+                          <a class="tag" href="/tags/#开发" title="开发">开发</a>
                         
                     </div>
                 </section>
