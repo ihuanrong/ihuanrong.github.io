@@ -276,7 +276,7 @@ Peace!</p>
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/hexo-theme-huweihuang/" data-toggle="tooltip" data-placement="top" title="[Hexo] Theme HuWeihuang">&larr; Previous Post</a>
+                            <a href="/article/循环序列模型/" data-toggle="tooltip" data-placement="top" title="循环序列模型">&larr; Previous Post</a>
                         </li>
                     
                     
@@ -425,6 +425,22 @@ Peace!</p>
 </style>
 
 
+{% elseif theme.gitalk.enable %}
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<div id="gitalk-container"></div>
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '4e227d17bf56935c2d77',
+        clientSecret: 'dbf9cf70da778e6de4e8850a11b05ad3e57def8e',
+        id: window.location.pathname,
+        repo: 'blog-comment',
+        owner: 'ihuanrong',
+        admin: 'ihuanrong'
+    })
+    gitalk.render('gitalk-container')
+</script>
+{% endif %}
 
     <!-- Footer -->
     <!-- Footer -->
