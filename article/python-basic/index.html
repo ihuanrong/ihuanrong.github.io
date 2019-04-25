@@ -71,7 +71,7 @@
 <style type="text/css">
     header.intro-header{
         
-            background-image: url('\img\article_header\artificial-intelligence-2228610_1920.jpg')
+            background-image: url('/img/article_header/artificial-intelligence-2228610_1920.jpg')
             /*post*/
         
     }
@@ -144,7 +144,7 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -158,7 +158,7 @@
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -218,6 +218,7 @@
 <p>最近在学校的发展规划处参加了一小部分代码的编写工作，还好python还算简单，磕磕绊绊也算是把任务完成了。但是在毫无Python编程基础的情况下，开发过程中难免遇到问题。下面是我在程序编写的过程中遇到的问题，有些是对Python语言特性不熟悉而产生的问题，有些是自己对代码逻辑没搞懂而遇到的问题。</p>
 </blockquote>
 <h1 id="1-用python操作excel">1 用Python操作Excel</h1>
+<hr>
 <h2 id="11-读">1.1 读</h2>
 <pre><code class="language-python">import xlrd
  
@@ -261,6 +262,7 @@ sheet.col(1).width = 4000
 sheet.row(1).height = 3000
 </code></pre>
 <h1 id="2-python特性">2 Python特性</h1>
+<hr>
 <h2 id="21-自加自减">2.1 自加/自减</h2>
 <p>编写代码过程中发现Python并没有其他语言中很常见的++、–运算符，于是查了资料，才知道python是以内容为基准的，而不像C/C++以变量为基准，同一个数字5可以用多个名称来访问，a=5和b=5指向的都是同一个对象（可以使用id()观察发现）。这样的逻辑就决定了数字类型的值是无法改变的，也就无法使用自增自减运算符。<br>
 正确的自增：a = a + 1 / a += 1<br>
