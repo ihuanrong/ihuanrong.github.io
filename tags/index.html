@@ -99,6 +99,8 @@
     </div>
 </header>
 
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
 	
     <!-- Navigation -->
 <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
@@ -206,13 +208,13 @@
                 
                     <a href="#Blog" title="Blog" rel="2">Blog</a>
                 
+                    <a href="#LaTex" title="LaTex" rel="1">LaTex</a>
+                
                     <a href="#python" title="python" rel="1">python</a>
                 
                     <a href="#开发" title="开发" rel="1">开发</a>
                 
                     <a href="#NLP" title="NLP" rel="1">NLP</a>
-                
-                    <a href="#LaTex" title="LaTex" rel="1">LaTex</a>
                 
             </div>
 
@@ -373,6 +375,28 @@
             </div>
             
             <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="LaTex">
+                    <span class="tag-text">LaTex</span>
+                </span>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/article/support-LaTex-in-blog/">
+                        <h2 class="post-title">
+                            在Blog中支持LaTex公式
+                        </h2>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+            </div>
+            
+            <div class="one-tag-list">
                 <span class="fa fa-tag listing-seperator" id="python">
                     <span class="tag-text">python</span>
                 </span>
@@ -442,28 +466,6 @@
                 
             </div>
             
-            <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="LaTex">
-                    <span class="tag-text">LaTex</span>
-                </span>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/article/support-LaTex-in-blog/">
-                        <h2 class="post-title">
-                            在Blog中支持LaTex公式
-                        </h2>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-            </div>
-            
 
 
         </div>
@@ -514,8 +516,8 @@
                     <br>
                     Welcome to my blog <a href="http://ihuanrong.github.io">huanrong</a> 
                     <span style="display: inline-block; margin: 0 5px;">
-                        <!--<i class="fa fa-heart"></i>-->
-                    </span> | 
+                      <!--<i class="fa fa-heart"></i>-->
+                    </span>| 
 					
 					<span id="busuanzi_container_site_uv"> 
 					  本站总访问量 <span id="busuanzi_value_site_uv"></span> 次
