@@ -134,14 +134,14 @@
 
                         
                         <li>
-                            <a href="/about/">About Me</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About Me</a>
                         </li>
                         
                     
@@ -198,6 +198,10 @@
             <!-- 标签云 -->
             <div id='tag_cloud' class="tags">
                 
+                    <a href="#CV" title="CV" rel="1">CV</a>
+                
+                    <a href="#Deep Learning" title="Deep Learning" rel="2">Deep Learning</a>
+                
                     <a href="#Hexo" title="Hexo" rel="2">Hexo</a>
                 
                     <a href="#Blog" title="Blog" rel="2">Blog</a>
@@ -206,18 +210,85 @@
                 
                     <a href="#开发" title="开发" rel="1">开发</a>
                 
-                    <a href="#LaTex" title="LaTex" rel="1">LaTex</a>
-                
                     <a href="#NLP" title="NLP" rel="1">NLP</a>
                 
-                    <a href="#Deep Learning" title="Deep Learning" rel="2">Deep Learning</a>
-                
-                    <a href="#CV" title="CV" rel="1">CV</a>
+                    <a href="#LaTex" title="LaTex" rel="1">LaTex</a>
                 
             </div>
 
             <!-- 标签列表 -->
 
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="CV">
+                    <span class="tag-text">CV</span>
+                </span>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/article/Autonomous-driving-Car-detection/">
+                        <h2 class="post-title">
+                            Autonomous driving - Car detection
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                自动驾驶 - 车辆检测
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="Deep Learning">
+                    <span class="tag-text">Deep Learning</span>
+                </span>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/article/Autonomous-driving-Car-detection/">
+                        <h2 class="post-title">
+                            Autonomous driving - Car detection
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                自动驾驶 - 车辆检测
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/article/sequence-models-dlai/">
+                        <h2 class="post-title">
+                            Sequence Models
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                循环序列模型介绍
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+            </div>
             
             <div class="one-tag-list">
                 <span class="fa fa-tag listing-seperator" id="Hexo">
@@ -346,28 +417,6 @@
             </div>
             
             <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="LaTex">
-                    <span class="tag-text">LaTex</span>
-                </span>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/article/support-LaTex-in-blog/">
-                        <h2 class="post-title">
-                            在Blog中支持LaTex公式
-                        </h2>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-            </div>
-            
-            <div class="one-tag-list">
                 <span class="fa fa-tag listing-seperator" id="NLP">
                     <span class="tag-text">NLP</span>
                 </span>
@@ -394,8 +443,8 @@
             </div>
             
             <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="Deep Learning">
-                    <span class="tag-text">Deep Learning</span>
+                <span class="fa fa-tag listing-seperator" id="LaTex">
+                    <span class="tag-text">LaTex</span>
                 </span>
                 
                   <!-- <li class="listing-item">
@@ -403,59 +452,10 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/article/Autonomous-driving-Car-detection/">
+                     <a href="/article/support-LaTex-in-blog/">
                         <h2 class="post-title">
-                            Autonomous driving - Car detection
+                            在Blog中支持LaTex公式
                         </h2>
-                        
-                            <h3 class="post-subtitle">
-                                自动驾驶 - 车辆检测
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/article/sequence-models-dlai/">
-                        <h2 class="post-title">
-                            Sequence Models
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                循环序列模型介绍
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-            </div>
-            
-            <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="CV">
-                    <span class="tag-text">CV</span>
-                </span>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/article/Autonomous-driving-Car-detection/">
-                        <h2 class="post-title">
-                            Autonomous driving - Car detection
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                自动驾驶 - 车辆检测
-                            </h3>
                         
                     </a>
                     <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
@@ -515,13 +515,18 @@
                     Welcome to my blog <a href="http://ihuanrong.github.io">huanrong</a> 
                     <span style="display: inline-block; margin: 0 5px;">
                         <!--<i class="fa fa-heart"></i>-->
-                    </span> 
-                    <!--re-Ported by <a href="http://www.huweihuang.com">胡伟煌</a>--> | 
+                    </span> | 
+					
+					<span id="busuanzi_container_site_uv"> 
+					  本站总访问量 <span id="busuanzi_value_site_uv"></span> 次
+					</span>
+                    
+					<!--re-Ported by <a href="http://www.huweihuang.com">胡伟煌</a> | 
                     <iframe
                         style="margin-left: 2px; margin-bottom:-5px;"
                         frameborder="0" scrolling="0" width="91px" height="20px"
                         src="https://ghbtns.com/github-btn.html?user=huweihuang&repo=hexo-theme-huweihuang&type=star&count=true" >
-                    </iframe>
+                    </iframe>-->
                 </p>
             </div>
         </div>
@@ -629,6 +634,8 @@
     })();
 </script>
 
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 
